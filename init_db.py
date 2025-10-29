@@ -1,8 +1,14 @@
 import sqlite3, os
 
-DB_PATH = "database/quiz.db"
+# ✅ Choose database path based on environment
+if os.getenv("RENDER"):  # If running on Render
+    DB_PATH = "/tmp/quiz.db"
+else:
+    DB_PATH = "database/quiz.db"
 
-os.makedirs("database", exist_ok=True)
+# ✅ Create directory only if using local path
+if not os.getenv("RENDER"):
+    os.makedirs("database", exist_ok=True)
 
 conn = sqlite3.connect(DB_PATH)
 c = conn.cursor()

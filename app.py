@@ -17,7 +17,7 @@ app = Flask(__name__)
 app.secret_key = SECRET_KEY
 bcrypt = Bcrypt(app)
 client = Groq(api_key=GROQ_API_KEY)
-DB_PATH = "database/quiz.db"
+DB_PATH = os.path.join(os.path.dirname(__file__), "database.db")
 
 # -------------------- DB CONNECTION --------------------
 def get_db():
