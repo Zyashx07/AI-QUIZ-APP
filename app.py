@@ -20,6 +20,19 @@ client = Groq(api_key=GROQ_API_KEY)
 DB_PATH = os.path.join(os.path.dirname(__file__), "database.db")
 
 # -------------------- DB CONNECTION --------------------
+import os
+import sqlite3
+
+# Detect Render environment
+if os.getenv("RENDER"):
+    DB_PATH = "/tmp/quiz.db"
+else:
+    DB_PATH = "database/quiz.db"
+
+# Create local folder if needed
+if not os.getenv("RENDER"):
+    os.makedirs("database", exist_ok=True)
+
 def get_db():
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
