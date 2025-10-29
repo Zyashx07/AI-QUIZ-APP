@@ -4,7 +4,8 @@ import sqlite3
 from datetime import datetime
 import os
 from dotenv import load_dotenv
-from groq import Groq
+from groq import Groq as GroqClient
+
 import json
 
 # -------------------- LOAD ENV --------------------
@@ -16,7 +17,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", os.urandom(24).hex())
 app = Flask(__name__)
 app.secret_key = SECRET_KEY
 bcrypt = Bcrypt(app)
-client = Groq(api_key=GROQ_API_KEY)
+client = GroqClient(api_key=GROQ_API_KEY)
 DB_PATH = "database/quiz.db"
 
 # -------------------- DB CONNECTION --------------------
