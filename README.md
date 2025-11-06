@@ -152,6 +152,7 @@ You can host NeuroQuiz on:
 
 Licensed under the MIT License
 Feel free to fork, modify, and learn from it ✨
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
 
 ---
